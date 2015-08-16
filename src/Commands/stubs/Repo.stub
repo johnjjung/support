@@ -1,0 +1,164 @@
+<?php
+
+namespace App\Contracts;
+
+use App\Exceptions\{{classname}}Exception;
+use App\Models\{{classname}}};
+use IanOlson\Support\Traits\UpdateTrait;
+use IanOlson\Support\Traits\UploadTrait;
+use IanOlson\Support\Traits\ValidateTrait;
+use Illuminate\Support\Facades\Cache;
+
+class Repo
+{
+    use UpdateTrait;
+    use UploadTrait;
+    use ValidateTrait;
+
+    /**
+     * Cache keys.
+     *
+     * @var array
+     *
+     * @todo Fill out the cache keys that you want to use when flushing the cache.
+     */
+    protected $cacheKeys = [
+        //
+    ];
+
+    /**
+     * Upload input keys.
+     *
+     * @var array
+     *
+     * @todo Fill out the upload keys from the request inputs with the files that you need to upload to storage.
+     */
+    protected $uploadKeys = [
+        //
+    ];
+
+    /**
+     * {@inheritDoc}
+     *
+     * @todo Fill out the cache key for this query.
+     */
+    public function all()
+    {
+        return Cache::rememberForever('', function () {
+            return {{classname}}::all();
+        });
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @todo Fill out the cache key for this query.
+     */
+    public function find($id)
+    {
+        return Cache::rememberForever(".{$id}", function () use ($id) {
+            return {{classname}}::find($id);
+        });
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @todo Fill out the validation rules.
+     * @todo Update the prefix parameter in the purgeCache method.
+     */
+    public function create(array $data)
+    {
+        // Setup validation rules.
+        $this->rules = [
+            //
+        ];
+
+        // Run validation.
+        $this->validate($data);
+
+        // Create model instance.
+        $model = {{classname}}::create([]);
+
+        // Loop through upload keys.
+        foreach ($this->uploadKeys as $key) {
+            if (!array_key_exists($key, $data)) {
+                continue;
+            }
+
+            // Perform the upload function.
+            $data[$key] = $this->upload($data[$key]);
+        }
+
+        // Update mass assignable attributes.
+        $this->updateAttributes($model, $data);
+
+        // Save model instance.
+        $model->save();
+
+        // Flush cache.
+        $this->purgeCache($model, 'prefix.');
+
+        return $model;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @todo Fill out the validation rules.
+     * @todo Update the prefix parameter in the purgeCache method.
+     */
+    public function update($id, array $data)
+    {
+        if (!$model = $this->find($id)) {
+            throw new {{classname}}Exception('{{classname}} could not be found.');
+        }
+
+        // Setup validation rules.
+        $this->rules = [
+            //
+        ];
+
+        // Run validation.
+        $this->validate($data);
+
+        // Loop through upload keys.
+        foreach ($this->uploadKeys as $key) {
+            if (!array_key_exists($key, $data)) {
+                continue;
+            }
+
+            // Perform the upload function.
+            $data[$key] = $this->upload($data[$key]);
+        }
+
+        // Update mass assignable attributes.
+        $this->updateAttributes($model, $data);
+
+        // Save model instance.
+        $model->save();
+
+        // Flush cache.
+        $this->purgeCache($model, 'prefix.');
+
+        return $model;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete($id)
+    {
+        if (!$model = $this->find($id)) {
+            throw new {{classname}}Exception('{{classname}} could not be found.');
+        }
+
+        // Flush cache.
+        $this->purgeCache($model, 'leads.');
+
+        // Delete model instance.
+        $model->delete();
+
+        return true;
+    }
+}

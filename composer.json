@@ -1,0 +1,49 @@
+{
+  "name": "iolson/support",
+  "description": "Support package for Laravel 5.1 projects. Used to bring in other packages I normally use on my projects.",
+  "keywords": [
+    "laravel",
+    "support"
+  ],
+  "homepage": "https://github.com/iolson/support",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ian Olson",
+      "email": "me@ianolson.io",
+      "role": "Lead Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "~5.1",
+    "league/flysystem-aws-s3-v3": "~1.0",
+    "barryvdh/laravel-debugbar": "^2.0",
+    "intervention/image": "^2.3",
+    "predis/predis": "~1.0",
+    "artesaos/seotools": "v0.7.3.4",
+    "cviebrock/eloquent-sluggable": "3.0.*",
+    "nicolaslopezj/searchable": "1.*"
+  },
+  "require-dev": {
+    "laravel/laravel": "~5.1",
+    "mockery/mockery": "~0.9",
+    "phpunit/phpunit": "~4.0",
+    "phpspec/phpspec": "~2.1",
+    "scrutinizer/ocular": "~1.1",
+    "fzaninotto/faker": "^1.5"
+  },
+  "autoload": {
+    "classmap": [
+      "tests"
+    ],
+    "psr-4": {
+      "IanOlson\\Support\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "IanOlson\\Support\\Test\\": "tests/"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Contracts;
+
+interface {{classname}}Interface
+{
+    /**
+     * Get all.
+     *
+     * @return mixed
+     */
+    public function all();
+
+    /**
+     * Find.
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+    public function find($id);
+
+    /**
+     * Create.
+     *
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function create(array $data);
+
+    /**
+     * Update.
+     *
+     * @param int   $id
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function update($id, array $data);
+
+    /**
+     * Delete.
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+    public function delete($id);
+}
