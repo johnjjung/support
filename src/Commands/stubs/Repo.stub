@@ -2,6 +2,7 @@
 
 namespace App\Contracts;
 
+use App\Contracts\{{classname}}Interface;
 use App\Exceptions\{{classname}}Exception;
 use App\Models\{{classname}};
 use IanOlson\Support\Traits\UpdateTrait;
@@ -9,7 +10,7 @@ use IanOlson\Support\Traits\UploadTrait;
 use IanOlson\Support\Traits\ValidateTrait;
 use Illuminate\Support\Facades\Cache;
 
-class Repo
+class Repo implements {{classname}}Interface
 {
     use UpdateTrait;
     use UploadTrait;
