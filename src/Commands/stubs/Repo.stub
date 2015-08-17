@@ -147,6 +147,8 @@ class Repo implements {{classname}}Interface
 
     /**
      * {@inheritDoc}
+     *
+     * @todo Update the prefix parameter in the purgeCache method.
      */
     public function delete($id)
     {
@@ -155,7 +157,7 @@ class Repo implements {{classname}}Interface
         }
 
         // Flush cache.
-        $this->purgeCache($model, 'leads.');
+        $this->purgeCache($model, 'prefix.');
 
         // Delete model instance.
         $model->delete();

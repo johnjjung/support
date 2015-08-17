@@ -227,7 +227,7 @@ trait UploadTrait
         $full  = $this->getUploadUri($full_filename);
         $thumb = $this->getUploadUri($full_filenameThumb);
 
-        return compact($full, $thumb);
+        return compact('full', 'thumb');
     }
 
     /**
