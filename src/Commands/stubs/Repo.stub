@@ -3,7 +3,7 @@
 namespace App\Contracts;
 
 use App\Exceptions\{{classname}}Exception;
-use App\Models\{{classname}}};
+use App\Models\{{classname}};
 use IanOlson\Support\Traits\UpdateTrait;
 use IanOlson\Support\Traits\UploadTrait;
 use IanOlson\Support\Traits\ValidateTrait;
