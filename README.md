@@ -32,11 +32,15 @@ Here is basic usage of Traits that are included in this package.
 
 ### SeoTrait
 
+--
+
 This trait uses [SEOTools Package](https://github.com/artesaos/seotools), which will need to be setup if you want to use this trait inside your project. You can see install instructions below.
 
 Documentation coming soon.
 
 ### UpdateTrait
+
+--
 
 Add the trait as a use entry on your repository. This will pull in some new methods in order to create/update records.
 
@@ -103,9 +107,13 @@ protected function purgeCache($model = null, $prefix = null)
 
 ### UploadTrait
 
+--
+
 Documentation coming soon.
 
 ### ValidateTrait
+
+--
 
 Add the trait as a use entry on your repository. This will pull in the Laravel validation method. Before you call the validation method, you will setup the rules that will need to validate the request by using the following. `$data` is a passed in data of `$request->all()` from a controller.
 
@@ -133,7 +141,7 @@ This package pulls in other packages, here is a quick how-to guide taken from ea
 
 ### Laravel Debugbar ([GitHub](https://github.com/barryvdh/laravel-debugbar))
 
----
+--
 
 Include the service provider within your `app/config/app.php`.
 
@@ -145,7 +153,7 @@ Include the service provider within your `app/config/app.php`.
 
 ### Intervention Image ([GitHub](https://github.com/Intervention/image))
 
----
+--
 
 Include the service provider within your `app/config/app.php`.
 
@@ -165,7 +173,7 @@ Include the facade within your `app/config/app.php`.
 
 ### Searchable ([GitHub](https://github.com/nicolaslopezj/searchable))
 
----
+--
 
 Add the trait to your model and your search rules.
 
@@ -218,7 +226,7 @@ $users = User::search($query)
 
 ### SEOTools ([GitHub](https://github.com/artesaos/seotools) | [English Readme](https://github.com/artesaos/seotools/blob/master/README-en_US.md))
 
----
+--
 
 Include the service provider within your `app/config/app.php`.
 
