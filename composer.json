@@ -23,7 +23,8 @@
     "predis/predis": "~1.0",
     "artesaos/seotools": "v0.7.3.4",
     "cviebrock/eloquent-sluggable": "3.0.*",
-    "nicolaslopezj/searchable": "1.*"
+    "nicolaslopezj/searchable": "1.*",
+    "rcrowe/twigbridge": "0.8.x"
   },
   "require-dev": {
     "laravel/laravel": "~5.1",
