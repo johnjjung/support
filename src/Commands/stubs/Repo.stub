@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Repositories;
 
 use App\Contracts\{{classname}}Interface;
 use App\Exceptions\{{classname}}Exception;
@@ -10,7 +10,7 @@ use IanOlson\Support\Traits\UploadTrait;
 use IanOlson\Support\Traits\ValidateTrait;
 use Illuminate\Support\Facades\Cache;
 
-class Repo implements {{classname}}Interface
+class {{classname}}Repo implements {{classname}}Interface
 {
     use UpdateTrait;
     use UploadTrait;
