@@ -264,6 +264,6 @@ trait SeoTrait
      */
     public function meta()
     {
-        return $this->morphMany('App\Models\Meta', 'reference');
+        return $this->morphMany('IanOlson\Support\Models\Meta', 'reference');
     }
 }
