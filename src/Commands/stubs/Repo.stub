@@ -17,15 +17,13 @@ class {{classname}}Repo implements {{classname}}Interface
     use ValidateTrait;
 
     /**
-     * Cache keys.
+     * Cache tag.
      *
-     * @var array
+     * @var string
      *
-     * @todo Fill out the cache keys that you want to use when flushing the cache.
+     * @todo Fill out the cache tag that you want to use for this model.
      */
-    protected $cacheKeys = [
-        //
-    ];
+    protected $cacheTag = '';
 
     /**
      * Upload input keys.
@@ -40,24 +38,20 @@ class {{classname}}Repo implements {{classname}}Interface
 
     /**
      * {@inheritDoc}
-     *
-     * @todo Fill out the cache key for this query.
      */
     public function all()
     {
-        return Cache::rememberForever('', function () {
+        return Cache::tags($this->cacheTag)->rememberForever('all', function () {
             return {{classname}}::all();
         });
     }
 
     /**
      * {@inheritDoc}
-     *
-     * @todo Fill out the cache key for this query.
      */
     public function find($id)
     {
-        return Cache::rememberForever(".{$id}", function () use ($id) {
+        return Cache::tags($this->cacheTag)->rememberForever("{$id}", function () use ($id) {
             return {{classname}}::find($id);
         });
     }
@@ -66,7 +60,6 @@ class {{classname}}Repo implements {{classname}}Interface
      * {@inheritDoc}
      *
      * @todo Fill out the validation rules.
-     * @todo Update the prefix parameter in the purgeCache method.
      */
     public function create(array $data)
     {
@@ -98,7 +91,7 @@ class {{classname}}Repo implements {{classname}}Interface
         $model->save();
 
         // Flush cache.
-        $this->purgeCache($model, 'prefix.');
+        Cache::tags($this->cacheTag)->flush();
 
         return $model;
     }
@@ -107,7 +100,6 @@ class {{classname}}Repo implements {{classname}}Interface
      * {@inheritDoc}
      *
      * @todo Fill out the validation rules.
-     * @todo Update the prefix parameter in the purgeCache method.
      */
     public function update($id, array $data)
     {
@@ -140,15 +132,13 @@ class {{classname}}Repo implements {{classname}}Interface
         $model->save();
 
         // Flush cache.
-        $this->purgeCache($model, 'prefix.');
+        Cache::tags($this->cacheTag)->flush();
 
         return $model;
     }
 
     /**
      * {@inheritDoc}
-     *
-     * @todo Update the prefix parameter in the purgeCache method.
      */
     public function delete($id)
     {
@@ -157,7 +147,7 @@ class {{classname}}Repo implements {{classname}}Interface
         }
 
         // Flush cache.
-        $this->purgeCache($model, 'prefix.');
+        Cache::tags($this->cacheTag)->flush();
 
         // Delete model instance.
         $model->delete();
