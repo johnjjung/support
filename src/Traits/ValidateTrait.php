@@ -9,8 +9,8 @@
 
 namespace IanOlson\Support\Traits;
 
+use IanOlson\Support\Exceptions\FormValidationException;
 use Illuminate\Support\Facades\Validator;
-use Laraflock\Dashboard\Exceptions\FormValidationException;
 
 trait ValidateTrait
 {
